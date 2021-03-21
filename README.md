@@ -1,27 +1,49 @@
-# FeedsListing
+# Feeds Feature Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+It is a feature which gives you listing of feeds and can filter feeds.
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Node
+- #### Node installation on Windows
 
-## Code scaffolding
+  Just go on [official Node.js website](https://nodejs.org/) and download the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- #### Node installation on Ubuntu
 
-## Build
+  You can install nodejs and npm easily with apt install, just run the following commands.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+      $ sudo apt install nodejs
+      $ sudo apt install npm
 
-## Running unit tests
+- #### Other Operating Systems
+  You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If the installation was successful, you should be able to run the following command.
 
-## Running end-to-end tests
+    $ node --version
+    v8.11.3
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    $ npm --version
+    6.1.0
 
-## Further help
+If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    $ npm install npm -g
+
+###
+
+## Install
+
+    $ git clone https://github.com/KetkiR/feeds-listing-frontend.git
+    $ cd feeds-listing-frontend
+    $ npm install
+
+## Configure app
+
+Open `src/environments/environment.ts` then edit it with your settings. You will need to specify the backend url to connect to.
+
+## Running the project
+
+    $ ng serve  -- will compile typescript and will run the project on port 4200.
