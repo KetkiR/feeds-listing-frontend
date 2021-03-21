@@ -1,0 +1,13 @@
+.dropdown{
+    width: 200px;
+    height: 37px;
+    /* margin-top: 4px; */
+    /* border-color: grey; */
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    color: grey;
+}
+.changecolortoblack {
+    color: black;
+}

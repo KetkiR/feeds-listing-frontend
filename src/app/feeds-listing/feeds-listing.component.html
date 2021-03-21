@@ -1,0 +1,114 @@
+<div class="container">
+  <div>
+    <form [formGroup]="searchFeedForm">
+      <h4 class="mt-4">Feed</h4>
+      <div class="row">
+        <!-- <div class="input-group mb-3 col">
+                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">@example.com</span>
+                        <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                      </div> -->
+        <div class="mb-3 col">
+          <div class="row">
+            <div class="col">
+              <!-- <label for="formGroupExampleInput" class="form-label">Example label</label> -->
+              <input formControlName="searchtextfield" type="text" class="form-control" id="formGroupExampleInput"
+                placeholder="Enter string to search here and hit enter" (keyup.enter)="getFeeds(true)">
+            </div>
+            <!-- <div class="col mt-4">
+                                    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                              </div> -->
+
+
+          </div>
+        </div>
+        <div class="col">
+          <select class="dropdown " formControlName="orderbyfield" (change)="getFeeds(true)">
+            <option [value]="'asc'" selected>asc</option>
+            <option [value]="'desc'">desc</option>
+          </select>
+        </div>
+        <div class="col">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link changecolortoblack" (click)="pagination('prev')" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <!-- <li class="page-item"><a class="page-link">{{start+1}}</a></li> -->
+              <!-- <li class="page-item"><a class="page-link">{{end}}</a></li> -->
+              <!-- <li class="page-item"><a class="page-link" href="#">{{total}}</a></li> -->
+              <li class="page-item">
+                <a class="page-link changecolortoblack" (click)="pagination('next')" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+            <span>
+              <h5> records {{start+1}} to {{end}} of {{total}} records</h5>
+            </span>
+          </nav>
+
+        </div>
+        <div class="col">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+              <input type="radio" name="options" id="option1" autocomplete="off" [value]="'tabular'"
+                [checked]="view == 'tabular'" (change)="handleViewChange($event)"> Tabular
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option2" autocomplete="off" [value]="'card'"
+                [checked]="view == 'card'" (change)="handleViewChange($event)"> card
+            </label>
+          </div>
+        </div>
+
+
+      </div>
+      <div *ngIf="feedsData && feedsData.length && view == 'card'" class="row">
+        <div class="col-lg-4 col-md-6 col-xs-12" *ngFor="let feed of feedsData">
+          <!-- <div></div> -->
+          <div class="card mt-2 mb-2" style="width: 18rem;">
+            <img src={{feed.image}} class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{feed.name}}</h5>
+              <p class="card-text">{{feed.description}}</p>
+              <p class="card-text">{{feed.dateLastEdited | date: 'medium'}}</p>
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="feedsData && feedsData.length == 0" class="row">
+        <p>
+          <h5>No data found, try using some other text !!!</h5>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="view == 'tabular'">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Image</th>
+          <th scope="col">Date last edited</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="col" *ngFor="let feed of feedsData">
+          <!-- <th scope="row">1</th> -->
+          <td class="col">{{feed.name}}</td>
+          <td class="col">{{feed.description}}</td>
+          <td><img style="width: 50%;" src={{feed.image}}></td>
+          <td>{{feed.dateLastEdited | date: 'medium'}}</td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
